@@ -1,0 +1,185 @@
+
+html, body {
+  overflow: hidden;
+  margin: 0;
+  font-family: Lato;
+}
+
+.background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  height: 130vh;
+  position: fixed;
+  width: 100%;
+  -webkit-transform: translateY(30vh);
+          transform: translateY(30vh);
+  -webkit-transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+  transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.background:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+ 
+}
+.noise.background:before {
+  background-image: url(../img/noise-pattern.png) !important;
+      background-repeat: repeat;
+}
+.overlay.background:before {
+  background: rgba(0, 0, 0, 0.70);
+}
+
+.background:first-child {
+
+  -webkit-transform: translateY(-15vh);
+          transform: translateY(-15vh);
+}
+.background:first-child .content-wrapper {
+  -webkit-transform: translateY(15vh);
+          transform: translateY(15vh);
+}
+
+
+/* Set stacking context of slides */
+.background:nth-child(1) {
+  z-index: 8;
+}
+
+.background:nth-child(2) {
+  z-index: 7;
+}
+
+.background:nth-child(3) {
+  z-index: 6;
+}
+.background:nth-child(4) {
+  z-index: 5;
+}
+.background:nth-child(5) {
+  z-index: 4;
+}
+.background:nth-child(6) {
+  z-index: 3;
+}
+.background:nth-child(7) {
+  z-index: 2;
+}
+.background:nth-child(8) {
+  z-index: 1;
+}
+
+
+
+.background .content-wrapper {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  color: #fff;
+  
+  -webkit-transform: translateY(40vh);
+          transform: translateY(40vh);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+  transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+}
+
+
+.background.up-scroll {
+  -webkit-transform: translate3d(0, -15vh, 0);
+          transform: translate3d(0, -15vh, 0);
+}
+.background.up-scroll .content-wrapper {
+  -webkit-transform: translateY(15vh);
+          transform: translateY(15vh);
+}
+.background.up-scroll + .background {
+  -webkit-transform: translate3d(0, 30vh, 0);
+          transform: translate3d(0, 30vh, 0);
+}
+.background.up-scroll + .background .content-wrapper {
+  -webkit-transform: translateY(30vh);
+          transform: translateY(30vh);
+}
+
+.background.down-scroll {
+  -webkit-transform: translate3d(0, -130vh, 0);
+          transform: translate3d(0, -130vh, 0);
+}
+.background.down-scroll .content-wrapper {
+  -webkit-transform: translateY(40vh);
+          transform: translateY(40vh);
+}
+.background.down-scroll + .background:not(.down-scroll) {
+  -webkit-transform: translate3d(0, -15vh, 0);
+          transform: translate3d(0, -15vh, 0);
+}
+.background.down-scroll + .background:not(.down-scroll) .content-wrapper {
+  -webkit-transform: translateY(15vh);
+          transform: translateY(15vh);
+}
+
+
+/*noraml style start form herer===================*/
+.text-shadow {
+    text-shadow: rgba(0, 0, 0, 0.298039) 0px 5px 0px;
+}
+.fw300 {
+  font-weight: 300;
+}
+.fw100 {
+  font-weight: 100;
+}
+.fw700 {
+  font-weight: 700;
+}
+.fw100 {
+  font-weight: 100;
+}
+.container {
+      width: 1170px;
+      margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.bgGreen{background-color: #54943f}
+.bgOrange{background-color: #de6c40}
+.bgBlue{background-color: #22548c}
+.bgYellow{background-color: #fbda52}
+.bgGray{background-color: #eae7dc}
+.bgLBlue{background-color: #92d2fc}
+.bgLPink{background-color: #e387c1}
+.bgLGreen{background-color: #73eaaf}
+.bgLOrange{background-color: #fb8b8b}
+.hi {
+ font-size: 150px;
+    text-shadow: rgba(0, 0, 0, 0.298039) 0px 5px 0px;
+    display: inline-block;
+    margin-right: 15px;
+}
+.hi2 {
+    font-size: 35px;
+   float: right;
+    font-weight: 400;
+    transform: rotate(-90deg);
+   margin-top: 150px;
+}

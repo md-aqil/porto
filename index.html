@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/paralaxx.css">
+  <style>
+    
+
+    
+  </style>
+</head>
+<body>
+
+
+<div class="">
+  <section class="background bgGreen noise overlay" style="background: url(img/designer.jpeg);">
+    <div class="content-wrapper">
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="hi wow zoomIn">Hello <br> I am <br> Aqil</h1>
+          
+        </div>
+        <div class="col-md-6">
+          <h1 class="hi2">
+            Front-End Developer <br> and Web Designer based <br> in Delhi
+          </h1>
+        </div>
+      </div>
+          
+
+         
+      </div>
+    </div>
+  </section>
+
+  <section class="background bgOrange">
+    <div class="content-wrapper">
+
+            <svg width="200" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+          <rect class="rec" x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
+        
+          <circle class="cir" cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="5"/>
+        
+
+         
+        </svg>
+    </div>
+  </section>
+
+
+
+  <section class="background  bgBlue">
+    <div class="content-wrapper">
+      <p class="content-title">Etiam consequat lectus.</p>
+      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
+    </div>
+  </section>
+  <section class="background bgYellow">
+    <div class="content-wrapper">
+      <p class="content-title">Etiam consequat lectus.</p>
+      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
+    </div>
+  </section>
+  <section class="background bgGray">
+    <div class="content-wrapper">
+      <p class="content-title">Etiam consequat lectus.</p>
+      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
+    </div>
+  </section>
+  <section class="background bgLBlue">
+    <div class="content-wrapper">
+      <p class="content-title">Etiam consequat lectus.</p>
+      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
+    </div>
+  </section>
+  <section class="background bgLOrange">
+    <div class="content-wrapper">
+      <p class="content-title">Etiam consequat lectus.</p>
+      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
+    </div>
+  </section>
+
+  <section class="background bgLGreen">
+    <div class="content-wrapper">
+      <p class="content-title">Etiam consequat lectus.</p>
+      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
+    </div>
+  </section>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/load.min.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/morph.js"></script>
+<script src="js/ScrollMagic.min.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/main.js"></script>
+<script>
+  new WOW().init();
+</script>
+
+<script>
+  // ------------- VARIABLES ------------- //
+  var ticking = false;
+  var isFirefox = (/Firefox/i.test(navigator.userAgent));
+  var isIe = (/MSIE/i.test(navigator.userAgent)) || (/Trident.*rv\:11\./i.test(navigator.userAgent));
+  var scrollSensitivitySetting = 30; //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive) 
+  var slideDurationSetting = 600; //Amount of time for which slide is "locked"
+  var currentSlideNumber = 0;
+  var totalSlideNumber = $(".background").length;
+
+  // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
+  function parallaxScroll(evt) {
+    if (isFirefox) {
+      //Set delta for Firefox
+      delta = evt.detail * (-120);
+    } else if (isIe) {
+      //Set delta for IE
+      delta = -evt.deltaY;
+    } else {
+      //Set delta for all other browsers
+      delta = evt.wheelDelta;
+    }
+
+    if (ticking != true) {
+      if (delta <= -scrollSensitivitySetting) {
+        //Down scroll
+        ticking = true;
+        if (currentSlideNumber !== totalSlideNumber - 1) {
+          currentSlideNumber++;
+          nextItem();
+        }
+        slideDurationTimeout(slideDurationSetting);
+      }
+      if (delta >= scrollSensitivitySetting) {
+        //Up scroll
+        ticking = true;
+        if (currentSlideNumber !== 0) {
+          currentSlideNumber--;
+        }
+        previousItem();
+        slideDurationTimeout(slideDurationSetting);
+      }
+    }
+  }
+
+  // ------------- SET TIMEOUT TO TEMPORARILY "LOCK" SLIDES ------------- //
+  function slideDurationTimeout(slideDuration) {
+    setTimeout(function() {
+      ticking = false;
+    }, slideDuration);
+  }
+
+  // ------------- ADD EVENT LISTENER ------------- //
+  var mousewheelEvent = isFirefox ? "DOMMouseScroll" : "wheel";
+  window.addEventListener(mousewheelEvent, _.throttle(parallaxScroll, 60), false);
+
+  // ------------- SLIDE MOTION ------------- //
+  function nextItem() {
+    var $previousSlide = $(".background").eq(currentSlideNumber - 1);
+    $previousSlide.removeClass("up-scroll").addClass("down-scroll");
+  }
+
+  function previousItem() {
+    var $currentSlide = $(".background").eq(currentSlideNumber);
+    $currentSlide.removeClass("down-scroll").addClass("up-scroll");
+  }
+</script>
+</body>
+</html>
